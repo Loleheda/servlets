@@ -16,7 +16,9 @@ public class SendMessageCommand implements Command {
     @Override
     public Result execute(HttpServletRequest request, HttpServletResponse response) {
         User sessionUser = (User) request.getSession(false).getAttribute("user");
-        DataBase.getChat().addMessage(sessionUser, request.getParameter("messageInput"));
+        synchronized (DataBase.getChat()) {
+            DataBase.getChat().addMessage(sessionUser, request.getParameter("messageInput"));
+        }
         return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
     }
 }
