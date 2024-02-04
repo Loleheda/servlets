@@ -1,8 +1,6 @@
 package org.example.filter;
 
-import org.example.data.DataBase;
 import org.example.data.User;
-import org.example.result.ForwardResult;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
